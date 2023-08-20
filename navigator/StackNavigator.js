@@ -12,6 +12,8 @@ import CategoriesScreen from "../screens/CategoriesScreen";
 import CategoryScreen from "../screens/CategoryScreen";
 import ProfileScreen from "../screens/ProfileScreen";
 import TrendingScreen from "../screens/TrendingScreen";
+import ProductInfoScreen from "../screens/ProductInfoScreen";
+import CheckoutScreen from "../screens/CheckoutScreen";
 
 
 const StackNavigator = () => {
@@ -62,6 +64,16 @@ const StackNavigator = () => {
         <Stack.Screen
           name="Trending"
           component={TrendingScreen}
+          options={{ headerShown: false }}
+        />
+        <Stack.Screen
+          name="ProductInfo"
+          component={ProductInfoScreen}
+          options={{ headerShown: false }}
+        />
+        <Stack.Screen
+          name="Checkout"
+          component={CheckoutScreen}
           options={{ headerShown: false }}
         />
       </Stack.Navigator>
