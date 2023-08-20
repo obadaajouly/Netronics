@@ -1,9 +1,10 @@
 import React from 'react'
-import {Text} from 'react-native'
+import {Text, StatusBar} from 'react-native'
 
 const CheckoutScreen = () => {
   return (
     <>
+    <StatusBar barStyle={"dark-content"} backgroundColor={"white"} />
       <Text>Checkout Screen</Text>
     </>
   )
