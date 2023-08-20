@@ -70,7 +70,7 @@ const HomeScreen = () => {
             images={images}
             autoplay={true}
             circleLoop={true}
-            autoplayInterval={1000}
+            autoplayInterval={3000}
             dotColor={"red"}
             ImageComponentStyle={{
               width: "96%",
