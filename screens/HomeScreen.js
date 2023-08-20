@@ -10,19 +10,9 @@ import {
   Platform,
   ScrollView,
 } from "react-native";
-
-import {
-  Feather,
-  Ionicons,
-  MaterialIcons,
-  Entypo,
-  AntDesign,
-} from "@expo/vector-icons";
+import { Feather,Ionicons,MaterialIcons,Entypo,AntDesign } from "@expo/vector-icons";
 import DropDownPicker from "react-native-dropdown-picker";
-import { useNavigation } from "@react-navigation/native";
-import AsyncStorage from "@react-native-async-storage/async-storage";
 const { list, images, deals, offers } = require("../List");
-import PropTypes from "deprecated-react-native-prop-types";
 import { SliderBox } from "react-native-image-slider-box";
 
 const HomeScreen = () => {
