@@ -397,5 +397,5 @@ module.exports = {
   images,
   deals,
   offers,
-  products
+  productsList
 };
