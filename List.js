@@ -182,3 +182,11 @@ const offers = [
     size: "8GB RAM, 128GB Storage",
   },
 ];
+
+
+module.exports = {
+    list,
+    images,
+    deals,
+    offers,
+  };

@@ -15,8 +15,9 @@ import { Feather,Ionicons,MaterialIcons,Entypo,AntDesign } from "@expo/vector-ic
 import { SliderBox } from "react-native-image-slider-box";
 import DropDownPicker from "react-native-dropdown-picker";
 import { useNavigation } from "@react-navigation/native";
-import { BottomModal, SlideAnimation, ModalContent } from "react-native-modals";
+// import { BottomModal, SlideAnimation, ModalContent } from "react-native-modals";
 import AsyncStorage from "@react-native-async-storage/async-storage";
+const { list, images, deals, offers } = require('../List');
 
 const HomeScreen = () => {
   return (
