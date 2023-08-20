@@ -32,7 +32,7 @@ const Pages = () => {
           </Text>
         </Pressable>
         <Pressable
-          onPress={() => navigation.navigate("Home")}
+          onPress={() => navigation.replace("Main")}
           style={{ marginTop: 15 }}
         >
           <Text style={{ textAlign: "center", color: "gray", fontSize: 16 }}>

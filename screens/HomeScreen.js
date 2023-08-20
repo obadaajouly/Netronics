@@ -14,7 +14,7 @@ import { Feather,Ionicons,MaterialIcons,Entypo,AntDesign } from "@expo/vector-ic
 import DropDownPicker from "react-native-dropdown-picker";
 const { list, images, deals, offers,productsList } = require("../List");
 import { SliderBox } from "react-native-image-slider-box";
-
+import ProductCard from "../components/ProductCard";
 
 const HomeScreen = () => {
   const [open, setOpen] = useState(false);
@@ -26,6 +26,7 @@ const HomeScreen = () => {
     { label: "electronics", value: "electronics" },
     { label: "women's clothing", value: "women's clothing" },
   ]);
+  console.log(products)
 
   const onGenderOpen = useCallback(() => {
     setCompanyOpen(false);
@@ -272,8 +273,8 @@ const HomeScreen = () => {
           <View
             style={{
               marginHorizontal: 10,
-              marginTop: 25,
-              width: "40%",
+              marginTop: 15,
+              width: "45%",
               marginBottom: open ? 50 : 15,
             }}
           >
@@ -282,6 +283,7 @@ const HomeScreen = () => {
                 borderColor: "#B7B7B7",
                 height: 30,
                 marginBottom: open ? 120 : 15,
+                width:"100%"
               }}
               open={open}
               value={category} //genderValue
@@ -296,6 +298,20 @@ const HomeScreen = () => {
               zIndex={3000}
               zIndexInverse={1000}
             />
+          </View>
+          <View
+            style={{
+              flexDirection: "row",
+              alignItems: "center",
+              flexWrap: "wrap",
+              justifyContent: "center",
+            }}
+          >
+            {products
+              ?.filter((item) => item.category === category)
+              .map((item, index) => (
+                <ProductCard item={item} key={index} />
+              ))}
           </View>
       </ScrollView>
     </>
