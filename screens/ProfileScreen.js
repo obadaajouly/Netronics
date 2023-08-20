@@ -46,7 +46,7 @@ const ProfileScreen = () => {
       <View style={styles.container}>
         <Image
           style={styles.profilePicture}
-          source={require("../assets/profile-screen/Profile.png")}
+          source={{uri:"https://st2.depositphotos.com/2559749/11304/v/450/depositphotos_113040644-stock-illustration-flat-icon-isolate-on-white.jpg"}}
         />
         <Text style={styles.name}>John Doe</Text>
         <View style={styles.lists}>
