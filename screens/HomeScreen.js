@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect,useCallback } from "react";
 import {
   Text,
   View,
@@ -12,11 +12,26 @@ import {
 } from "react-native";
 import { Feather,Ionicons,MaterialIcons,Entypo,AntDesign } from "@expo/vector-icons";
 import DropDownPicker from "react-native-dropdown-picker";
-const { list, images, deals, offers } = require("../List");
+const { list, images, deals, offers,productsList } = require("../List");
 import { SliderBox } from "react-native-image-slider-box";
 
+
 const HomeScreen = () => {
-  console.log(images);
+  const [open, setOpen] = useState(false);
+  const [category, setCategory] = useState("jewelery");
+  const [products, setProducts] = useState(productsList);
+  const [items, setItems] = useState([
+    { label: "Men's clothing", value: "men's clothing" },
+    { label: "jewelery", value: "jewelery" },
+    { label: "electronics", value: "electronics" },
+    { label: "women's clothing", value: "women's clothing" },
+  ]);
+
+  const onGenderOpen = useCallback(() => {
+    setCompanyOpen(false);
+  }, []);
+
+
   return (
     <>
       <StatusBar barStyle={"dark-content"} backgroundColor={"white"} />
@@ -70,7 +85,7 @@ const HomeScreen = () => {
             images={images}
             autoplay={true}
             circleLoop={true}
-            autoplayInterval={1000}
+            autoplayInterval={3000}
             dotColor={"red"}
             ImageComponentStyle={{
               width: "96%",
@@ -195,9 +210,97 @@ const HomeScreen = () => {
             Trending deals
           </Text>
         </View>
+        <ScrollView horizontal showsHorizontalScrollIndicator={false}>
+            {offers.map((item, index) => (
+              <Pressable
+              key = {index}
+                onPress={() =>
+                  navigation.navigate("Info", {
+                    id: item.id,
+                    title: item.title,
+                    price: item?.price,
+                    carouselImages: item.carouselImages,
+                    color: item?.color,
+                    size: item?.size,
+                    oldPrice: item?.oldPrice,
+                    item: item,
+                  })
+                }
+                style={{
+                  alignItems: "center",
+                  justifyContent: "center",
+                  backgroundColor: "white",
+                  gap: 15,
+                  paddingVertical: 20,
+                }}
+              >
+                <Image
+                  style={{
+                    width: 120,
+                    height: 110,
+                    resizeMode: "contain",
+                    marginTop: 10,
+                  }}
+                  source={{ uri: item?.image }}
+                />
+
+                <View
+                  style={{
+                    backgroundColor: "#E31837",
+                    paddingVertical: 5,
+                    width: 100,
+                    justifyContent: "center",
+                    alignItems: "center",
+                    marginTop: 10,
+                    borderRadius: 4,
+                  }}
+                >
+                  <Text
+                    style={{
+                      textAlign: "center",
+                      color: "white",
+                      fontSize: 12,
+                      fontWeight: "bold",
+                    }}
+                  >
+                    Upto {item?.offer}
+                  </Text>
+                </View>
+              </Pressable>
+            ))}
+          </ScrollView>
+          <View
+            style={{
+              marginHorizontal: 10,
+              marginTop: 25,
+              width: "40%",
+              marginBottom: open ? 50 : 15,
+            }}
+          >
+            <DropDownPicker
+              style={{
+                borderColor: "#B7B7B7",
+                height: 30,
+                marginBottom: open ? 120 : 15,
+              }}
+              open={open}
+              value={category} //genderValue
+              items={items}
+              setOpen={setOpen}
+              setValue={setCategory}
+              setItems={setItems}
+              placeholder="choose category"
+              placeholderStyle={styles.placeholderStyles}
+              onOpen={onGenderOpen}
+              // onChangeValue={onChange}
+              zIndex={3000}
+              zIndexInverse={1000}
+            />
+          </View>
       </ScrollView>
     </>
   );
 };
+const styles = StyleSheet.create({});
 
 export default HomeScreen;
