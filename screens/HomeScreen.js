@@ -12,7 +12,7 @@ import {
 } from "react-native";
 
 import { Feather,Ionicons,MaterialIcons,Entypo,AntDesign } from "@expo/vector-icons";
-import { SliderBox } from "react-native-image-slider-box";
+// import { SliderBox } from "react-native-image-slider-box";
 import DropDownPicker from "react-native-dropdown-picker";
 import { useNavigation } from "@react-navigation/native";
 // import { BottomModal, SlideAnimation, ModalContent } from "react-native-modals";
