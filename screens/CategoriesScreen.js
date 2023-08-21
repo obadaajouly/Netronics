@@ -42,7 +42,7 @@ const Card = ({ title, copy, button, imageId }) => {
   const navigation = useNavigation();
 
   const handleCardPress = () => {
-    navigation.navigate(title);
+  navigation.navigate('Category', { categoryTitle: title });
   };
   return (
     
