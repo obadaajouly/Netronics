@@ -18,36 +18,36 @@ const ProfileScreen = () => {
           <Image
             style={styles.profileIcon}
             resizeMode="contain"
-            source={require("../assets/profile-screen/profile-icon.png")}
+            // source={require("../assets/profile-screen/profile-icon.png")}
           />
           <Text style={styles.categoryText}>Edit Profile</Text>
           <Image
             style={styles.arrowRight}
-            source={require("../assets/profile-screen/arrow-right.png")}
+            // source={require("../assets/profile-screen/arrow-right.png")}
           />
         </View>
         <View style={styles.category}>
           <Image
             style={styles.profileIcon}
             resizeMode="contain"
-            source={require("../assets/profile-screen/location.png")}
+            // source={require("../assets/profile-screen/location.png")}
           />
           <Text style={styles.categoryText}>Shopping Address</Text>
           <Image
             style={styles.arrowRight}
-            source={require("../assets/profile-screen/arrow-right.png")}
+            // source={require("../assets/profile-screen/arrow-right.png")}
           />
         </View>
         <View style={styles.category}>
           <Image
             style={styles.profileIcon}
             resizeMode="contain"
-            source={require("../assets/profile-screen/wishlist.png")}
+            // source={require("../assets/profile-screen/wishlist.png")}
           />
           <Text style={styles.categoryText}>WishList</Text>
           <Image
             style={styles.arrowRight}
-            source={require("../assets/profile-screen/arrow-right.png")}
+            // source={require("../assets/profile-screen/arrow-right.png")}
           />
         </View>
         <View style={styles.category}>
@@ -59,19 +59,18 @@ const ProfileScreen = () => {
           <Text style={styles.categoryText}>Notification</Text>
           <Image
             style={styles.arrowRight}
-            source={require("../assets/profile-screen/arrow-right.png")}
+            // source={require("../assets/profile-screen/arrow-right.png")}
           />
         </View>
         <View style={styles.category}>
           <Image
             style={styles.profileIcon}
             resizeMode="contain"
-            source={require("../assets/profile-screen/history.png")}
           />
           <Text style={styles.categoryText}>Order History</Text>
           <Image
             style={styles.arrowRight}
-            source={require("../assets/profile-screen/arrow-right.png")}
+            // source={require("../assets/profile-screen/arrow-right.png")}
           />
         </View>
         </View>
