@@ -1,124 +1,317 @@
-import {useState} from "react";
-import { View, Text, StatusBar, Image, StyleSheet,Platform } from "react-native";
-
-
+import React, {useState} from "react";
+import {
+  View,
+  Text,
+  StatusBar,
+  Image,
+  StyleSheet,
+  Pressable,
+  ScrollView,
+} from "react-native";
+import { AntDesign } from "@expo/vector-icons";
 
 const ProfileScreen = () => {
   const [os, setOs] = useState(Platform.OS);
   return (
     <>
-      {os === "android" &&(
-          <StatusBar barStyle={"dark-content"} backgroundColor={"white"} />
+      {os === "android" && (
+        <StatusBar barStyle={"dark-content"} backgroundColor={"white"} />
         )}
-      {os === "ios"&& (<View style={{ marginTop: 50 }}></View>)}
-      <View style={styles.container}>
+      {os === "ios" && <View style={{ marginTop: 50 }}></View>}
+
+      {/* profile picture and name */}
+      <View>
         <Image
-          style={styles.profilePicture}
-          source={{uri:"https://st2.depositphotos.com/2559749/11304/v/450/depositphotos_113040644-stock-illustration-flat-icon-isolate-on-white.jpg"}}
+          style={{
+            width: 90,
+            height: 90,
+            borderRadius: 50,
+            marginLeft: "auto",
+            marginRight: "auto",
+            marginTop: 15,
+          }}
+          source={{
+            uri: "https://images.pexels.com/photos/220453/pexels-photo-220453.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
+          }}
         />
-        <Text style={styles.name}>John Doe</Text>
-        <View style={styles.lists}>
-        <View style={styles.category}>
-          <Image
-            style={styles.profileIcon}
-            resizeMode="contain"
-            // source={require("../assets/profile-screen/profile-icon.png")}
-          />
-          <Text style={styles.categoryText}>Edit Profile</Text>
-          <Image
-            style={styles.arrowRight}
-            // source={require("../assets/profile-screen/arrow-right.png")}
-          />
+        <Text style={{ fontSize: 20, fontWeight: "bold", textAlign: "center" }}>
+          John Doe
+        </Text>
+        <Pressable
+          style={{
+            width: 100,
+            backgroundColor: "#FEBE10",
+            borderRadius: 6,
+            marginLeft: "auto",
+            marginRight: "auto",
+            padding: 5,
+            marginTop: 10,
+          }}
+        >
+          <Text
+            style={{
+              textAlign: "center",
+              color: "white",
+              fontSize: 16,
+              fontWeight: "bold",
+            }}
+          >
+            Edit Profile
+          </Text>
+        </Pressable>
+        {/*End of profile picture and name section*/}
+        {/* Orders Section */}
+        <Text
+          style={{
+            fontSize: 20,
+            fontWeight: "bold",
+            marginTop: 40,
+            marginLeft: 20,
+          }}
+        >
+          My Orders
+        </Text>
+        <View style={{ flexDirection: "row" }}>
+          <ScrollView horizontal={true} showsHorizontalScrollIndicator={false}>
+            <Pressable
+              style={{
+                marginVertical: 10,
+                flexDirection: "row",
+                alignItems: "center",
+                justifyContent: "center",
+                backgroundColor: "white",
+                marginLeft: 35,
+                width: 25,
+                height: 25,
+                borderRadius: 10,
+                shadowColor: "#393E46",
+                shadowOffset: { width: 0, height: 2 },
+                shadowOpacity: 0.2,
+                shadowRadius: 3,
+                elevation: 5,
+                padding: 70,
+                marginTop: 30,
+              }}
+            >
+              <Image
+                style={{ width: 150, height: 150, resizeMode: "contain" }}
+                source={{
+                  uri: "https://www.stockmustgo.co.uk/cdn/shop/products/Samsung-S20-FE-Red-1-800x800.png?v=1686156320",
+                }}
+              />
+            </Pressable>
+            <Pressable
+              style={{
+                marginVertical: 10,
+                flexDirection: "row",
+                alignItems: "center",
+                justifyContent: "center",
+                backgroundColor: "white",
+                marginLeft: 35,
+                width: 25,
+                height: 25,
+                borderRadius: 10,
+                shadowColor: "#393E46",
+                shadowOffset: { width: 0, height: 2 },
+                shadowOpacity: 0.2,
+                shadowRadius: 3,
+                elevation: 5,
+                padding: 70,
+                marginTop: 30,
+              }}
+            >
+              <Image
+                style={{ width: 100, height: 110, resizeMode: "contain" }}
+                source={{
+                  uri: "https://m.media-amazon.com/images/I/81vDZyJQ-4L._SY879_.jpg",
+                }}
+              />
+            </Pressable>
+            <Pressable
+              style={{
+                marginVertical: 10,
+                flexDirection: "row",
+                alignItems: "center",
+                justifyContent: "center",
+                backgroundColor: "white",
+                marginLeft: 35,
+                width: 25,
+                height: 25,
+                borderRadius: 10,
+                shadowColor: "#393E46",
+                shadowOffset: { width: 0, height: 2 },
+                shadowOpacity: 0.2,
+                shadowRadius: 3,
+                elevation: 5,
+                padding: 70,
+                marginTop: 30,
+              }}
+            >
+              <Image
+                style={{ width: 100, height: 110, resizeMode: "contain" }}
+                source={{
+                  uri: "https://m.media-amazon.com/images/I/71h2K2OQSIL._SX679_.jpg",
+                }}
+              />
+            </Pressable>
+            <Pressable
+              style={{
+                marginVertical: 10,
+                flexDirection: "row",
+                alignItems: "center",
+                justifyContent: "center",
+                backgroundColor: "white",
+                marginLeft: 35,
+                width: 25,
+                height: 25,
+                borderRadius: 10,
+                shadowColor: "#393E46",
+                shadowOffset: { width: 0, height: 2 },
+                shadowOpacity: 0.2,
+                shadowRadius: 3,
+                elevation: 5,
+                padding: 70,
+                marginTop: 30,
+              }}
+            >
+              <Image
+                style={{ width: 100, height: 110, resizeMode: "contain" }}
+                source={{
+                  uri: "https://m.media-amazon.com/images/I/41t7Wa+kxPL._AC_SY400_.jpg",
+                }}
+              />
+            </Pressable>
+          </ScrollView>
         </View>
-        <View style={styles.category}>
-          <Image
-            style={styles.profileIcon}
-            resizeMode="contain"
-            // source={require("../assets/profile-screen/location.png")}
-          />
-          <Text style={styles.categoryText}>Shopping Address</Text>
-          <Image
-            style={styles.arrowRight}
-            // source={require("../assets/profile-screen/arrow-right.png")}
-          />
-        </View>
-        <View style={styles.category}>
-          <Image
-            style={styles.profileIcon}
-            resizeMode="contain"
-            // source={require("../assets/profile-screen/wishlist.png")}
-          />
-          <Text style={styles.categoryText}>WishList</Text>
-          <Image
-            style={styles.arrowRight}
-            // source={require("../assets/profile-screen/arrow-right.png")}
-          />
-        </View>
-        <View style={styles.category}>
-          <Image
-            style={styles.profileIcon}
-            resizeMode="contain"
-            source={require("../assets/profile-screen/notification.png")}
-          />
-          <Text style={styles.categoryText}>Notification</Text>
-          <Image
-            style={styles.arrowRight}
-            // source={require("../assets/profile-screen/arrow-right.png")}
-          />
-        </View>
-        <View style={styles.category}>
-          <Image
-            style={styles.profileIcon}
-            resizeMode="contain"
-          />
-          <Text style={styles.categoryText}>Order History</Text>
-          <Image
-            style={styles.arrowRight}
-            // source={require("../assets/profile-screen/arrow-right.png")}
-          />
-        </View>
+        {/* End of Orders Section */}
+        {/* WishList Section */}
+        <View>
+          <Text
+            style={{
+              fontSize: 20,
+              fontWeight: "bold",
+              marginTop: 50,
+              marginLeft: 20,
+            }}
+          >
+            My WishList <AntDesign name="hearto" size={20} color="black" />
+          </Text>
+          <ScrollView horizontal={true} showsHorizontalScrollIndicator={false}>
+            <Pressable
+              style={{
+                marginVertical: 10,
+                flexDirection: "row",
+                alignItems: "center",
+                justifyContent: "center",
+                backgroundColor: "white",
+                marginLeft: 35,
+                width: 25,
+                height: 25,
+                borderRadius: 10,
+                shadowColor: "#393E46",
+                shadowOffset: { width: 0, height: 2 },
+                shadowOpacity: 0.2,
+                shadowRadius: 3,
+                elevation: 5,
+                padding: 70,
+                marginTop: 30,
+              }}
+            >
+              <Image
+                style={{ width: 120, height: 150, resizeMode: "contain" }}
+                source={{
+                  uri: "https://kddi-h.assetsadobe3.com/is/image/content/dam/au-com/mobile/mb_img_58.jpg?scl=1",
+                }}
+              />
+            </Pressable>
+            <Pressable
+              style={{
+                marginVertical: 10,
+                flexDirection: "row",
+                alignItems: "center",
+                justifyContent: "center",
+                backgroundColor: "white",
+                marginLeft: 35,
+                width: 25,
+                height: 25,
+                borderRadius: 10,
+                shadowColor: "#393E46",
+                shadowOffset: { width: 0, height: 2 },
+                shadowOpacity: 0.2,
+                shadowRadius: 3,
+                elevation: 5,
+                padding: 70,
+                marginTop: 30,
+              }}
+            >
+              <Image
+                style={{ width: 100, height: 110, resizeMode: "contain" }}
+                source={{
+                  uri: "https://www.fitbit.com/global/content/dam/fitbit/global/pdp/devices/versa-4/hero-static/black/versa4-black-device-3qtr.png",
+                }}
+              />
+            </Pressable>
+            <Pressable
+              style={{
+                marginVertical: 10,
+                flexDirection: "row",
+                alignItems: "center",
+                justifyContent: "center",
+                backgroundColor: "white",
+                marginLeft: 35,
+                width: 25,
+                height: 25,
+                borderRadius: 10,
+                shadowColor: "#393E46",
+                shadowOffset: { width: 0, height: 2 },
+                shadowOpacity: 0.2,
+                shadowRadius: 3,
+                elevation: 5,
+                padding: 70,
+                marginTop: 30,
+              }}
+            >
+              <Image
+                style={{ width: 100, height: 110, resizeMode: "contain" }}
+                source={{
+                  uri: "https://oasis.opstatics.com/content/dam/oasis/page/2023/in/oneplus-10t/specs/10r-black.png",
+                }}
+              />
+            </Pressable>
+            <Pressable
+              style={{
+                marginVertical: 10,
+                flexDirection: "row",
+                alignItems: "center",
+                justifyContent: "center",
+                backgroundColor: "white",
+                marginLeft: 35,
+                width: 25,
+                height: 25,
+                borderRadius: 10,
+                shadowColor: "#393E46",
+                shadowOffset: { width: 0, height: 2 },
+                shadowOpacity: 0.2,
+                shadowRadius: 3,
+                elevation: 5,
+                padding: 70,
+                marginTop: 30,
+              }}
+            >
+              <Image
+                style={{ width: 100, height: 110, resizeMode: "contain" }}
+                source={{
+                  uri: "https://cdn1.smartprix.com/rx-iB0511vCS-w1200-h1200/B0511vCS.jpg",
+                }}
+              />
+            </Pressable>
+
+            {/* End Of WishList Section */}
+          </ScrollView>
         </View>
       </View>
-    </>
-  );
-};
 
-const styles = StyleSheet.create({
-  container: {
-    // paddingTop: 50,
-    display: "flex",
-    
-  },
-  profilePicture: {
-    width: 150,
-    height: 150,
-    alignSelf: "center",
-    marginVertical: 60,
-    marginBottom:0
-  },
-  name:{
-    textAlign:'center',
-    fontSize:20,
-    fontWeight:'bold',
-  },
-  category: {
-    display: "flex",
-    flexDirection: "row",
-    justifyContent: "space-between",
-    alignItems: "center",
-    marginHorizontal:20,
-    marginVertical: 10,
-  },
-  profileIcon: {
-    width: 40,
-    height: 50,
-  },
-  categoryText:{
-    fontSize:18,
-  },
-  lists:{
-    marginTop:50
-  }
-});
+        </>
+      )}
 
 export default ProfileScreen;
