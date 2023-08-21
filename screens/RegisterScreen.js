@@ -39,13 +39,10 @@ const RegisterScreen = () => {
           justifyContent: "center",
         }}
       >
-        <View>
-          {/* App logo */}
+        <View style={{marginBottom:40}}>
           <Image
-            style={{ width: 150, height: 100 }}
-            source={{
-              uri: "https://assets.stickpng.com/thumbs/6160562276000b00045a7d97.png",
-            }}
+            style={{ width: 250, height: 100 }}
+            source={require('../assets/logo/logo-no-background.png')}
           />
         </View>
 
@@ -65,7 +62,7 @@ const RegisterScreen = () => {
             </Text>
           </View>
 
-          <View style={{ marginTop: 70 }}>
+          <View style={{ marginTop: 30 }}>
             {/* Input field for name */}
             <View
               style={{
@@ -202,7 +199,7 @@ const RegisterScreen = () => {
 
           {/* Link to Sign In */}
           <Pressable
-            onPress={() => navigation.goBack()}
+            onPress={() => navigation.navigate("Login")}
             style={{ marginTop: 15 }}
           >
             <Text style={{ textAlign: "center", color: "gray", fontSize: 16 }}>

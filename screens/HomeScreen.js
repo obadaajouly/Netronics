@@ -1,4 +1,4 @@
-import { useState, useEffect,useCallback } from "react";
+import { useState, useEffect, useCallback } from "react";
 import {
   Text,
   View,
@@ -10,16 +10,25 @@ import {
   Platform,
   ScrollView,
 } from "react-native";
-import { Feather,Ionicons,MaterialIcons,Entypo,AntDesign } from "@expo/vector-icons";
+import {
+  Feather,
+  Ionicons,
+  MaterialIcons,
+  Entypo,
+  AntDesign,
+} from "@expo/vector-icons";
 import DropDownPicker from "react-native-dropdown-picker";
-const { list, images, deals, offers,productsList } = require("../List");
+const { list, images, deals, offers, productsList } = require("../List");
 import { SliderBox } from "react-native-image-slider-box";
-
+import ProductCard from "../components/ProductCard";
 
 const HomeScreen = () => {
+  console.log("Platform.OS", Platform.OS);
+  const [os, setOs] = useState(Platform.OS);
   const [open, setOpen] = useState(false);
   const [category, setCategory] = useState("jewelery");
   const [products, setProducts] = useState(productsList);
+  const [barColor, setBarColor] = useState();
   const [items, setItems] = useState([
     { label: "Men's clothing", value: "men's clothing" },
     { label: "jewelery", value: "jewelery" },
@@ -29,12 +38,18 @@ const HomeScreen = () => {
 
   const onGenderOpen = useCallback(() => {
     setCompanyOpen(false);
-  }, []);
+  });
 
+  useEffect(() => {
+    setBarColor("#f8c353");
+  }, []);
 
   return (
     <>
-      <StatusBar barStyle={"dark-content"} backgroundColor={"white"} />
+      {os === "android" &&(
+          <StatusBar barStyle={"dark-content"} backgroundColor={barColor} />
+        )}
+      {os === "ios"&& (<View style={{ marginTop: 50 }}></View>)}
       <ScrollView>
         <View
           style={{
@@ -43,7 +58,7 @@ const HomeScreen = () => {
         >
           <View
             style={{
-              backgroundColor: "#fff",
+              backgroundColor: "#f8c353",
               padding: 10,
               flexDirection: "row",
               alignItems: "center",
@@ -78,7 +93,7 @@ const HomeScreen = () => {
               name="mic"
               size={24}
               color="#393E46"
-              style={{ marginTop: 25 }}
+              style={{ marginTop: 10 }}
             />
           </View>
           <SliderBox
@@ -211,92 +226,107 @@ const HomeScreen = () => {
           </Text>
         </View>
         <ScrollView horizontal showsHorizontalScrollIndicator={false}>
-            {offers.map((item, index) => (
-              <Pressable
-              key = {index}
-                onPress={() =>
-                  navigation.navigate("Info", {
-                    id: item.id,
-                    title: item.title,
-                    price: item?.price,
-                    carouselImages: item.carouselImages,
-                    color: item?.color,
-                    size: item?.size,
-                    oldPrice: item?.oldPrice,
-                    item: item,
-                  })
-                }
+          {offers.map((item, index) => (
+            <Pressable
+              key={index}
+              onPress={() =>
+                navigation.navigate("Info", {
+                  id: item.id,
+                  title: item.title,
+                  price: item?.price,
+                  carouselImages: item.carouselImages,
+                  color: item?.color,
+                  size: item?.size,
+                  oldPrice: item?.oldPrice,
+                  item: item,
+                })
+              }
+              style={{
+                alignItems: "center",
+                justifyContent: "center",
+                backgroundColor: "white",
+                gap: 15,
+                paddingVertical: 20,
+              }}
+            >
+              <Image
                 style={{
-                  alignItems: "center",
+                  width: 120,
+                  height: 110,
+                  resizeMode: "contain",
+                  marginTop: 10,
+                }}
+                source={{ uri: item?.image }}
+              />
+
+              <View
+                style={{
+                  backgroundColor: "#E31837",
+                  paddingVertical: 5,
+                  width: 100,
                   justifyContent: "center",
-                  backgroundColor: "white",
-                  gap: 15,
-                  paddingVertical: 20,
+                  alignItems: "center",
+                  marginTop: 10,
+                  borderRadius: 4,
                 }}
               >
-                <Image
+                <Text
                   style={{
-                    width: 120,
-                    height: 110,
-                    resizeMode: "contain",
-                    marginTop: 10,
-                  }}
-                  source={{ uri: item?.image }}
-                />
-
-                <View
-                  style={{
-                    backgroundColor: "#E31837",
-                    paddingVertical: 5,
-                    width: 100,
-                    justifyContent: "center",
-                    alignItems: "center",
-                    marginTop: 10,
-                    borderRadius: 4,
+                    textAlign: "center",
+                    color: "white",
+                    fontSize: 12,
+                    fontWeight: "bold",
                   }}
                 >
-                  <Text
-                    style={{
-                      textAlign: "center",
-                      color: "white",
-                      fontSize: 12,
-                      fontWeight: "bold",
-                    }}
-                  >
-                    Upto {item?.offer}
-                  </Text>
-                </View>
-              </Pressable>
-            ))}
-          </ScrollView>
-          <View
+                  Upto {item?.offer}
+                </Text>
+              </View>
+            </Pressable>
+          ))}
+        </ScrollView>
+        <View
+          style={{
+            marginHorizontal: 10,
+            marginTop: 15,
+            width: "45%",
+            marginBottom: open ? 50 : 15,
+          }}
+        >
+          <DropDownPicker
             style={{
-              marginHorizontal: 10,
-              marginTop: 25,
-              width: "40%",
-              marginBottom: open ? 50 : 15,
+              borderColor: "#B7B7B7",
+              height: 30,
+              marginBottom: open ? 120 : 15,
+              width: "100%",
             }}
-          >
-            <DropDownPicker
-              style={{
-                borderColor: "#B7B7B7",
-                height: 30,
-                marginBottom: open ? 120 : 15,
-              }}
-              open={open}
-              value={category} //genderValue
-              items={items}
-              setOpen={setOpen}
-              setValue={setCategory}
-              setItems={setItems}
-              placeholder="choose category"
-              placeholderStyle={styles.placeholderStyles}
-              onOpen={onGenderOpen}
-              // onChangeValue={onChange}
-              zIndex={3000}
-              zIndexInverse={1000}
-            />
-          </View>
+            open={open}
+            value={category} //genderValue
+            items={items}
+            setOpen={setOpen}
+            setValue={setCategory}
+            setItems={setItems}
+            placeholder="choose category"
+            placeholderStyle={styles.placeholderStyles}
+            onOpen={onGenderOpen}
+            // onChangeValue={onChange}
+            zIndex={3000}
+            zIndexInverse={1000}
+          />
+        </View>
+        <View
+          style={{
+            flexDirection: "row",
+            alignItems: "center",
+            flexWrap: "wrap",
+            justifyContent: "center",
+          }}
+        >
+          {products
+            ?.filter((item) => item.category === category)
+            .map((item, index) => (
+              <ProductCard item={item} key={index} />
+            ))}
+        </View>
       </ScrollView>
     </>
   );

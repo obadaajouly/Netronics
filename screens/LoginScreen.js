@@ -7,17 +7,19 @@ import {
   TextInput,
   Pressable,
   StatusBar,
+  Platform
 } from "react-native";
 import { useNavigation } from "@react-navigation/native";
 import { MaterialIcons, AntDesign } from "@expo/vector-icons";
 
 
 const LoginScreen = () => {
+  console.log("Platform.OS",Platform.OS)
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const navigation = useNavigation();
   const handleLogin = () => {
-    navigation.navigate("Home");
+    navigation.replace("Main");
   };
   return (
     <>
@@ -30,12 +32,10 @@ const LoginScreen = () => {
           justifyContent: "center",
         }}
       >
-        <View>
+        <View style={{marginBottom:40}}>
           <Image
-            style={{ width: 150, height: 100 }}
-            source={{
-              uri: "https://assets.stickpng.com/thumbs/6160562276000b00045a7d97.png",
-            }}
+            style={{ width: 250, height: 100 }}
+            source={require('../assets/logo/logo-no-background.png')}
           />
         </View>
 
@@ -53,7 +53,7 @@ const LoginScreen = () => {
             </Text>
           </View>
 
-          <View style={{ marginTop: 70 }}>
+          <View style={{ marginTop: 30 }}>
             <View
               style={{
                 flexDirection: "row",

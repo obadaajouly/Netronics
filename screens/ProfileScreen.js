@@ -1,4 +1,4 @@
-import React from "react";
+import React, {useState} from "react";
 import {
   View,
   Text,
@@ -8,13 +8,16 @@ import {
   Pressable,
   ScrollView,
 } from "react-native";
-
 import { AntDesign } from "@expo/vector-icons";
 
 const ProfileScreen = () => {
+  const [os, setOs] = useState(Platform.OS);
   return (
     <>
-      <StatusBar barStyle={"dark-content"} backgroundColor={"white"} />
+      {os === "android" && (
+        <StatusBar barStyle={"dark-content"} backgroundColor={"white"} />
+        )}
+      {os === "ios" && <View style={{ marginTop: 50 }}></View>}
 
       {/* profile picture and name */}
       <View>
@@ -307,8 +310,8 @@ const ProfileScreen = () => {
           </ScrollView>
         </View>
       </View>
-    </>
-  );
-};
+
+        </>
+      )}
 
 export default ProfileScreen;
