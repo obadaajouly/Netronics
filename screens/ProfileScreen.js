@@ -1,48 +1,12 @@
 import React from "react";
 import { View, Text, StatusBar, Image, StyleSheet } from "react-native";
 
-const styles = StyleSheet.create({
-  container: {
-    // paddingTop: 50,
-    display: "flex",
-    
-  },
-  profilePicture: {
-    width: 150,
-    height: 150,
-    alignSelf: "center",
-    marginVertical: 60,
-    marginBottom:0
-  },
-  name:{
-    textAlign:'center',
-    fontSize:20,
-    fontWeight:'bold',
-  },
-  category: {
-    display: "flex",
-    flexDirection: "row",
-    justifyContent: "space-between",
-    alignItems: "center",
-    marginHorizontal:20,
-    marginVertical: 10,
-  },
-  profileIcon: {
-    width: 40,
-    height: 50,
-  },
-  categoryText:{
-    fontSize:18,
-  },
-  lists:{
-    marginTop:50
-  }
-});
+
 
 const ProfileScreen = () => {
   return (
     <>
-      <StatusBar barStyle={"dark-content"} backgroundColor={"white"} />
+      <StatusBar barStyle={"light-content"} backgroundColor={"black"} />
       <View style={styles.container}>
         <Image
           style={styles.profilePicture}
@@ -115,5 +79,43 @@ const ProfileScreen = () => {
     </>
   );
 };
+
+const styles = StyleSheet.create({
+  container: {
+    // paddingTop: 50,
+    display: "flex",
+    
+  },
+  profilePicture: {
+    width: 150,
+    height: 150,
+    alignSelf: "center",
+    marginVertical: 60,
+    marginBottom:0
+  },
+  name:{
+    textAlign:'center',
+    fontSize:20,
+    fontWeight:'bold',
+  },
+  category: {
+    display: "flex",
+    flexDirection: "row",
+    justifyContent: "space-between",
+    alignItems: "center",
+    marginHorizontal:20,
+    marginVertical: 10,
+  },
+  profileIcon: {
+    width: 40,
+    height: 50,
+  },
+  categoryText:{
+    fontSize:18,
+  },
+  lists:{
+    marginTop:50
+  }
+});
 
 export default ProfileScreen;

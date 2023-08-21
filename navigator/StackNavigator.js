@@ -28,44 +28,58 @@ const StackNavigator = () => {
           component={HomeScreen}
           options={{
             tabBarLabel: "Home",
-            backgroundColor: "#00CED1",
-            tabBarLabelStyle: { color: "#008E97" },
+            backgroundColor: "black",
+            tabBarLabelStyle: { color: "black" },
             headerShown: false,
             tabBarIcon: ({ focused }) =>
               focused ? (
-                <Entypo name="home" size={24} color="#008E97" />
+                <Entypo name="home" size={30} color="#f8c353" />
               ) : (
-                <AntDesign name="home" size={24} color="black" />
+                <AntDesign name="home" size={30} color="black" />
               ),
           }}
         />
-
         <Tab.Screen
           name="Cart"
           component={CartScreen}
           options={{
             tabBarLabel: "Cart",
-            tabBarLabelStyle: { color: "#008E97" },
+            tabBarLabelStyle: { color: "black" },
             headerShown: false,
             tabBarIcon: ({ focused }) =>
               focused ? (
-                <AntDesign name="shoppingcart" size={24} color="#008E97" />
+                <AntDesign name="shoppingcart" size={30} color="#f8c353" />
               ) : (
-                <AntDesign name="shoppingcart" size={24} color="#008E97" />
+                <AntDesign name="shoppingcart" size={30} color="black" />
               ),
           }}
         />
+        {/* <Tab.Screen
+          name="Profile"
+          component={ProfileScreen}
+          options={{
+            tabBarLabel: "Profile",
+            tabBarLabelStyle: { color: "black" },
+            tabBarIcon: ({ focused }) =>
+              focused ? (
+                <Ionicons name="person" size={30} color="#f8c353" />
+              ) : (
+                <Ionicons name="person-outline" size={30} color="black" />
+              ),
+          }}
+        /> */}
         <Tab.Screen
           name="Profile"
           component={ProfileScreen}
           options={{
             tabBarLabel: "Profile",
-            tabBarLabelStyle: { color: "#008E97" },
+            tabBarLabelStyle: { color: "black" },
+            headerShown: false,
             tabBarIcon: ({ focused }) =>
               focused ? (
-                <Ionicons name="person" size={24} color="#008E97" />
+                <Ionicons name="person" size={30} color="#f8c353" />
               ) : (
-                <Ionicons name="person-outline" size={24} color="#008E97" />
+                <Ionicons name="person-outline" size={30} color="black" />
               ),
           }}
         />
@@ -109,11 +123,6 @@ const StackNavigator = () => {
         <Stack.Screen
           name="Category"
           component={CategoryScreen}
-          options={{ headerShown: false }}
-        />
-        <Stack.Screen
-          name="Profile"
-          component={ProfileScreen}
           options={{ headerShown: false }}
         />
         <Stack.Screen
