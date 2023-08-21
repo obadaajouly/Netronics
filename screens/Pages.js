@@ -32,7 +32,7 @@ const Pages = () => {
           </Text>
         </Pressable>
         <Pressable
-          onPress={() => navigation.navigate("Home")}
+          onPress={() => navigation.replace("Main")}
           style={{ marginTop: 15 }}
         >
           <Text style={{ textAlign: "center", color: "gray", fontSize: 16 }}>
@@ -77,6 +77,22 @@ const Pages = () => {
         >
           <Text style={{ textAlign: "center", color: "gray", fontSize: 16 }}>
           Trending
+          </Text>
+        </Pressable>
+        <Pressable
+          onPress={() => navigation.navigate("ProductInfo")}
+          style={{ marginTop: 15 }}
+        >
+          <Text style={{ textAlign: "center", color: "gray", fontSize: 16 }}>
+          ProductInfo
+          </Text>
+        </Pressable>
+        <Pressable
+          onPress={() => navigation.navigate("Checkout")}
+          style={{ marginTop: 15 }}
+        >
+          <Text style={{ textAlign: "center", color: "gray", fontSize: 16 }}>
+          Checkout
           </Text>
         </Pressable>
       </View>
