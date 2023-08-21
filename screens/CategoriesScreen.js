@@ -7,33 +7,34 @@ import {
   Image,
   StatusBar,
   Platform,
+  ScrollView,
 } from "react-native";
 import { useNavigation } from "@react-navigation/native";
 
 const cards = [
   {
-    title: "Laptops",
-    copy: "Laptops",
-    button: "View Product ",
-    imageId: "1517021897933-0e0319cfbc28",
-  },
-  {
     title: "Mobiles",
     copy: "Mobiles",
-    button: "View Product",
-    imageId: "1533903345306-15d1c30952de",
+    button: "View Product ",
+    imageId: "https://english.onlinekhabar.com/wp-content/uploads/2021/09/A03s-e1631442371496-300x165.jpg",
   },
   {
-    title: "Earbuds",
-    copy: "Earbuds",
+    title: "Laptops",
+    copy: "Laptops",
+    button: "View Product",
+    imageId: "https://www.zdnet.com/a/img/resize/bd45ee12d626e1a79d05e6c8abbc4a263d125cc3/2022/02/25/c9d0c484-4a1d-48aa-97ca-534adb533d09/huawei-matebook-x-pro-mwc.jpg?auto=webp&width=1280",
+  },
+  {
+    title: "Headsets",
+    copy: "Headsets",
     button: "View Product ",
-    imageId: "1545243424-0ce743321e11",
+    imageId: "https://consumer.huawei.com/content/dam/huawei-cbg-site/weu/be/mkt/pdp/audio/freebuds-studio/audio.jpeg",
   },
   {
     title: "Smart Watches",
     copy: "Smart Watches",
     button: "View Product",
-    imageId: "1531306728370-e2ebd9d7bb99",
+    imageId: "https://consumer.huawei.com/content/dam/huawei-cbg-site/weu/common/mkt/plp/wearables/watch-fit2.jpg",
   },
 ];
 
@@ -41,22 +42,22 @@ const Card = ({ title, copy, button, imageId }) => {
   const navigation = useNavigation();
 
   const handleCardPress = () => {
-    navigation.navigate(title);
+  navigation.navigate('Category', { categoryTitle: title });
   };
   return (
-    <TouchableOpacity style={styles.card}>
+    
+    <TouchableOpacity style={styles.card} onPress={handleCardPress}>
       <Image
         source={{
-          uri: `https://images.unsplash.com/photo-${imageId}?ixlib=rb-1.2.1&q=80&fm=jpg&crop=entropy&cs=tinysrgb&w=400&fit=max&ixid=eyJhcHBfaWQiOjE0NTg5fQ`,
+          uri: `${imageId}`,
         }}
         style={styles.cardBackground}
       />
-      <View style={styles.content}>
+       <View style={styles.overlay} />
+      <View >
         <Text style={styles.title}>{title}</Text>
         <Text style={styles.copy}>{copy}</Text>
-        <TouchableOpacity style={styles.button} onPress={handleCardPress}>
-          <Text style={styles.buttonText}>{button}</Text>
-        </TouchableOpacity>
+        
       </View>
     </TouchableOpacity>
   );
@@ -82,17 +83,14 @@ const CategoriesScreen = ({ image, header, content }) => {
 
 const styles = StyleSheet.create({
   pageContent: {
-    flex: 1,
+  
 
-    flexDirection: "row",
-    flexWrap: "wrap",
-    justifyContent: "space-between",
 
-    padding: 20,
+    padding: 10,
   },
   card: {
-    width: "48%",
-    height: "32%",
+    width: "100%",
+    height: "22%",
     marginBottom: 20,
     borderRadius: 10,
     overflow: "hidden",
@@ -106,6 +104,11 @@ const styles = StyleSheet.create({
     width: "100%",
     height: "110%",
   },
+  overlay: {
+    ...StyleSheet.absoluteFillObject,
+    backgroundColor: "black",
+    opacity: 0.3, 
+  },
   content: {
     padding: 16,
     zIndex: 1,
@@ -114,7 +117,7 @@ const styles = StyleSheet.create({
     fontSize: 18,
     fontWeight: "bold",
     lineHeight: 1.2,
-    color: "whitesmoke",
+    color: "#f8c353",
   },
   copy: {
     fontFamily: "Cardo",
@@ -123,23 +126,10 @@ const styles = StyleSheet.create({
     lineHeight: 20,
     color: "whitesmoke",
     alignSelf: "center",
+
     fontWeight: "bold",
     marginTop: 80,
   },
-  button: {
-    marginTop: 100,
-    paddingVertical: 8,
-    paddingHorizontal: 16,
-    backgroundColor: "black",
-    borderRadius: 4,
-    alignItems: "center",
-  },
-  buttonText: {
-    fontSize: 12,
-    fontWeight: "bold",
-    letterSpacing: 0.5,
-    textTransform: "uppercase",
-    color: "white",
-  },
+  
 });
 export default CategoriesScreen;

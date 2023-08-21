@@ -5,6 +5,7 @@ import {
   ScrollView,
   Pressable,
   TextInput,
+  barColor,
   Image,
   StatusBar,
   Platform
@@ -18,8 +19,12 @@ import { width } from "deprecated-react-native-prop-types/DeprecatedImagePropTyp
 import { AppLoading } from "expo";
 import { useFonts } from "expo-font";
 import ProductCard from "../components/ProductCard";
+import { useNavigation, useRoute } from "@react-navigation/native";
 
 const CategoryScreen = () => {
+  const navigation = useNavigation();
+  const route = useRoute();
+  const { categoryTitle } = route.params;
   const [os, setOs] = useState(Platform.OS);
   return (
     <>
@@ -41,7 +46,7 @@ const CategoryScreen = () => {
         >
           <AntDesign name="left" size={12} color="black" />
           <Text style={{ fontSize: 14, fontWeight: 700 }}>
-            Mobiles Category
+          {categoryTitle} Category
           </Text>
           <Pressable onPress={() => navigation.navigate("Cart")} style={{}}>
             <AntDesign name="shoppingcart" size={24} color="black" />
