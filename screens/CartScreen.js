@@ -14,7 +14,10 @@ import { Ionicons } from "@expo/vector-icons";
 import { MaterialIcons } from "@expo/vector-icons";
 import { Entypo } from "@expo/vector-icons";
 import { width } from "deprecated-react-native-prop-types/DeprecatedImagePropType";
+import { useNavigation } from "@react-navigation/native";
+
 const CartScreen = () => {
+  const navigation = useNavigation();
   return (
     <>
       <StatusBar barStyle={"dark-content"} backgroundColor={"white"} />
@@ -343,6 +346,7 @@ const CartScreen = () => {
             />
           </Pressable>
           <Pressable
+          onPress={() => navigation.navigate("Checkout")}
           style={{
             width: 220,
             backgroundColor: "#f8c353",

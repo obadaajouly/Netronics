@@ -2,7 +2,7 @@ import React from "react";
 import { NavigationContainer } from "@react-navigation/native";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
-import { Entypo, AntDesign, Ionicons } from "@expo/vector-icons";
+import { Entypo, AntDesign, Ionicons,MaterialIcons } from "@expo/vector-icons";
 
 //Screens
 import Pages from "../screens/Pages";
@@ -40,6 +40,36 @@ const StackNavigator = () => {
           }}
         />
         <Tab.Screen
+          name="Categories"
+          component={CategoriesScreen}
+          options={{
+            tabBarLabel: "Categories",
+            tabBarLabelStyle: { color: "black" },
+            headerShown: false,
+            tabBarIcon: ({ focused }) =>
+              focused ? (
+                <MaterialIcons name="category" size={30} color="#f8c353" />
+              ) : (
+                <MaterialIcons name="category" size={30} color="black" />
+              ),
+          }}
+        />
+        <Tab.Screen
+          name="Trending"
+          component={TrendingScreen}
+          options={{
+            tabBarLabel: "Trending",
+            tabBarLabelStyle: { color: "black" },
+            headerShown: false,
+            tabBarIcon: ({ focused }) =>
+              focused ? (
+                <MaterialIcons name="whatshot" size={30} color="#f8c353" />
+              ) : (
+                <MaterialIcons name="whatshot" size={30} color="black" />
+              ),
+          }}
+        />
+        <Tab.Screen
           name="Cart"
           component={CartScreen}
           options={{
@@ -54,20 +84,6 @@ const StackNavigator = () => {
               ),
           }}
         />
-        {/* <Tab.Screen
-          name="Profile"
-          component={ProfileScreen}
-          options={{
-            tabBarLabel: "Profile",
-            tabBarLabelStyle: { color: "black" },
-            tabBarIcon: ({ focused }) =>
-              focused ? (
-                <Ionicons name="person" size={30} color="#f8c353" />
-              ) : (
-                <Ionicons name="person-outline" size={30} color="black" />
-              ),
-          }}
-        /> */}
         <Tab.Screen
           name="Profile"
           component={ProfileScreen}
@@ -83,6 +99,21 @@ const StackNavigator = () => {
               ),
           }}
         />
+        <Tab.Screen
+          name="Main"
+          component={Pages}
+          options={{
+            tabBarLabel: "Pages",
+            tabBarLabelStyle: { color: "black" },
+            headerShown: false,
+            tabBarIcon: ({ focused }) =>
+              focused ? (
+                <Entypo name="menu" size={30} color="#f8c353" />
+              ) : (
+                <Entypo name="menu" size={30} color="black" />
+              ),
+          }}
+        />
       </Tab.Navigator>
     );
   }
@@ -90,19 +121,14 @@ const StackNavigator = () => {
   return (
     <NavigationContainer>
       <Stack.Navigator>
-        <Stack.Screen
-          name="Pages"
-          component={Pages}
+      <Stack.Screen
+          name="Login"
+          component={LoginScreen}
           options={{ headerShown: false }}
         />
         <Stack.Screen
           name="Register"
           component={RegisterScreen}
-          options={{ headerShown: false }}
-        />
-        <Stack.Screen
-          name="Login"
-          component={LoginScreen}
           options={{ headerShown: false }}
         />
         <Stack.Screen
@@ -138,6 +164,11 @@ const StackNavigator = () => {
         <Stack.Screen
           name="Checkout"
           component={CheckoutScreen}
+          options={{ headerShown: false }}
+        />
+        <Stack.Screen
+          name="Pages"
+          component={Pages}
           options={{ headerShown: false }}
         />
       </Stack.Navigator>
