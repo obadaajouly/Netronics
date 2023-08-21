@@ -7,6 +7,7 @@ import {
   TextInput,
   Image,
   StatusBar,
+  Platform
 } from "react-native";
 import { Feather } from "@expo/vector-icons";
 import { AntDesign } from "@expo/vector-icons";
@@ -19,9 +20,13 @@ import { useFonts } from "expo-font";
 import ProductCard from "../components/ProductCard";
 
 const CategoryScreen = () => {
+  const [os, setOs] = useState(Platform.OS);
   return (
     <>
-      <StatusBar barStyle={"dark-content"} backgroundColor={"white"} />
+      {os === "android" &&(
+          <StatusBar barStyle={"dark-content"} backgroundColor={barColor} />
+        )}
+      {os === "ios"&& (<View style={{ marginTop: 50 }}></View>)}
 
       <ScrollView style={{ paddingTop: 15, flex: 1, backgroundColor: "white" }}>
         <View

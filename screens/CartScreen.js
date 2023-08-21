@@ -1,4 +1,4 @@
-import React from "react";
+import {useState} from "react";
 import {
   Text,
   View,
@@ -7,6 +7,7 @@ import {
   TextInput,
   Image,
   StatusBar,
+  Platform
 } from "react-native";
 import { Feather } from "@expo/vector-icons";
 import { AntDesign } from "@expo/vector-icons";
@@ -17,10 +18,14 @@ import { width } from "deprecated-react-native-prop-types/DeprecatedImagePropTyp
 import { useNavigation } from "@react-navigation/native";
 
 const CartScreen = () => {
+  const [os, setOs] = useState(Platform.OS);
   const navigation = useNavigation();
   return (
     <>
-      <StatusBar barStyle={"dark-content"} backgroundColor={"white"} />
+      {os === "android" &&(
+          <StatusBar barStyle={"dark-content"} backgroundColor={"white"} />
+        )}
+      {os === "ios"&& (<View style={{ marginTop: 50 }}></View>)}
 
       <ScrollView style={{ paddingTop: 15, flex: 1, backgroundColor: "white" }}>
         <View>

@@ -1,12 +1,16 @@
-import React from "react";
-import { View, Text, StatusBar, Image, StyleSheet } from "react-native";
+import {useState} from "react";
+import { View, Text, StatusBar, Image, StyleSheet,Platform } from "react-native";
 
 
 
 const ProfileScreen = () => {
+  const [os, setOs] = useState(Platform.OS);
   return (
     <>
-      <StatusBar barStyle={"light-content"} backgroundColor={"black"} />
+      {os === "android" &&(
+          <StatusBar barStyle={"dark-content"} backgroundColor={"white"} />
+        )}
+      {os === "ios"&& (<View style={{ marginTop: 50 }}></View>)}
       <View style={styles.container}>
         <Image
           style={styles.profilePicture}

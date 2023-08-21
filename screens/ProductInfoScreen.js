@@ -9,6 +9,7 @@ import {
   StatusBar,
   ImageBackground,
   Dimensions,
+  Platform
 } from "react-native";
 import { Feather } from "@expo/vector-icons";
 import { AntDesign } from "@expo/vector-icons";
@@ -26,13 +27,16 @@ const ProductInfoScreen = () => {
     const toggleLike = () => {
       setIsLiked(!isLiked); 
     };
-  
+    const [os, setOs] = useState(Platform.OS);
   const navigation = useNavigation();
   const { width } = Dimensions.get("window");
   const height = (width * 100) / 100;
   return (
     <>
-      <StatusBar barStyle={"dark-content"} backgroundColor={"white"} />
+      {os === "android" &&(
+          <StatusBar barStyle={"dark-content"} backgroundColor={"white"} />
+        )}
+      {os === "ios"&& (<View style={{ marginTop: 50 }}></View>)}
       <ScrollView style={{ paddingTop: 15, flex: 1, backgroundColor: "white" }}>
         <View
           style={{
