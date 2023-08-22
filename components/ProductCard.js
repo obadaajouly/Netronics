@@ -13,7 +13,7 @@ const ProductItem = ({ item }) => {
       style={{
         marginHorizontal: 10,
         marginVertical: 10,
-        width: "45%",
+        width: "40%",
         display: "flex",
         justifyContent: "center",
         alignContent: "center",
