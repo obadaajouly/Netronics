@@ -20,12 +20,15 @@ import { AppLoading } from "expo";
 import { useFonts } from "expo-font";
 import ProductCard from "../components/ProductCard";
 import { useNavigation, useRoute } from "@react-navigation/native";
+const { productsList } = require("../ProductData");
 
 const CategoryScreen = () => {
   const navigation = useNavigation();
   const route = useRoute();
   const { categoryTitle } = route.params;
   const [os, setOs] = useState(Platform.OS);
+  console.log(categoryTitle)
+
   return (
     <>
       {os === "android" &&(
@@ -33,25 +36,7 @@ const CategoryScreen = () => {
         )}
       {os === "ios"&& (<View style={{ marginTop: 50 }}></View>)}
 
-      <ScrollView style={{ paddingTop: 15, flex: 1, backgroundColor: "white" }}>
-        <View
-          style={{
-            display: "flex",
-            flexDirection: "row",
-            justifyContent: "space-between",
-            alignItems: "center",
-            width: "92%",
-            marginLeft: 15,
-          }}
-        >
-          <AntDesign name="left" size={12} color="black" />
-          <Text style={{ fontSize: 14, fontWeight: 700 }}>
-          {categoryTitle} Category
-          </Text>
-          <Pressable onPress={() => navigation.navigate("Cart")} style={{}}>
-            <AntDesign name="shoppingcart" size={24} color="black" />
-          </Pressable>
-        </View>
+      <ScrollView style={{ paddingTop: 0, flex: 1, }}>
         <View>
           <Text
             style={{
@@ -59,7 +44,7 @@ const CategoryScreen = () => {
               width: "60%",
               fontWeight: "700",
               fontSize: 18,
-              marginTop: 30,
+              marginTop: 15,
               marginLeft: 15,
               fontFamily: "Righteous",
             }}
@@ -102,7 +87,7 @@ const CategoryScreen = () => {
             <Pressable
               style={{
                 width: 100,
-                backgroundColor: "#f6f6f6",
+                backgroundColor: "#fff",
                 borderRadius: 15,
                 marginLeft: 15,
 
@@ -125,7 +110,7 @@ const CategoryScreen = () => {
             <Pressable
               style={{
                 width: 100,
-                backgroundColor: "#f6f6f6",
+                backgroundColor: "#fff",
                 borderRadius: 15,
                 marginLeft: 15,
 
@@ -148,52 +133,17 @@ const CategoryScreen = () => {
         </ScrollView>
         <View
           style={{
-            display: "flex",
             flexDirection: "row",
             alignItems: "center",
-            justifyContent: "space-between",
-            width:"90%",
-            gap:2,
-            marginLeft:"auto",
-            marginRight:"auto",
-            marginTop:15
-
-
+            flexWrap: "wrap",
+            justifyContent: "center",
           }}
         >
-          <View
-            style={{
-              width: 150,
-              height: 170,
-              backgroundColor: "#fff",
-              borderRadius: 15,
-              padding: 8,
-              marginBottom: 35,
-              shadowColor: "#393E46",
-              shadowOffset: { width: 0, height: 2 },
-              shadowOpacity: 0.2,
-              shadowRadius: 3,
-              elevation: 5,
-              borderRadius:25,
-            }}
-          ></View>
-          <View
-            style={{
-              width: 150,
-              height: 170,
-              backgroundColor: "#fff",
-              borderRadius: 15,
-
-              padding: 8,
-              marginBottom: 35,
-              shadowColor: "#393E46",
-              shadowOffset: { width: 0, height: 2 },
-              shadowOpacity: 0.2,
-              shadowRadius: 3,
-              elevation: 5,
-              borderRadius:25,
-            }}
-          ></View>
+          {productsList
+            ?.filter((item) => item.category === categoryTitle)
+            .map((item, index) => (
+              <ProductCard item={item} key={index} />
+            ))}
         </View>
       </ScrollView>
     </>

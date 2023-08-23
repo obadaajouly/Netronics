@@ -1,12 +1,15 @@
 import { useState } from "react";
 import { StyleSheet, Text, View, Pressable, Image } from "react-native";
 import { useNavigation } from "@react-navigation/native";
+import { useCartsContext } from "../hooks/useCartContext";
 
 const ProductItem = ({ item }) => {
   const [addedToCart, setAddedToCart] = useState(false);
   const navigation = useNavigation();
+  const { dispatch } = useCartsContext();
   const addItemToCart = (item) => {
     setAddedToCart(true);
+    dispatch({ type: "ADD_CARD", payload: item });
   };
 
   return (

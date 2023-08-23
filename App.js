@@ -1,12 +1,13 @@
-import {StyleSheet} from 'react-native';
-import StackNavigator from './navigator/StackNavigator';
-
-
+import { StyleSheet } from "react-native";
+import StackNavigator from "./navigator/StackNavigator";
+import { CartContextProvider } from "./context/CartContext";
 
 export default function App() {
   return (
     <>
-      <StackNavigator/>
+      <CartContextProvider>
+        <StackNavigator />
+      </CartContextProvider>
     </>
   );
 }
@@ -14,8 +15,8 @@ export default function App() {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
+    backgroundColor: "#fff",
+    alignItems: "center",
+    justifyContent: "center",
   },
 });
