@@ -942,7 +942,8 @@
       carouselImages: [
         "https://m.media-amazon.com/images/I/91A1GJKNX3L._AC_SL1500_.jpg",
         "https://m.media-amazon.com/images/I/51AagXv+TPL._AC_SL1500_.jpg",
-        "https://m.media-amazon.com/images/I/91nyxJKqrKL._AC_SL1500_.jpg",
+        "https://fdn2.gsmarena.com/vv/pics/apple/apple-ipad-97-2017-1.jpg",
+        "https://fdn2.gsmarena.com/vv/pics/apple/apple-ipad-97-2017-2.jpg",
       ],
       desc: "Also known as Apple iPad (5th generation)Wi-Fi + Cellular & GPS: A1823 (Global) Wi-Fi only, w/o GPS: A1822 (Global)",
       colors: [ "Silver", "Space Gray"],
@@ -950,7 +951,7 @@
       oldprice: 390   ,
       type: "Trending",
       category: "tablets",
-      brand: "SAMSUNG",
+      brand: "Apple",
       rating: 4.4,
     },
   ];

@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import {
   Text,
   View,
@@ -7,20 +7,58 @@ import {
   TextInput,
   Pressable,
   StatusBar,
-  Platform
+  Platform,
 } from "react-native";
 import { useNavigation } from "@react-navigation/native";
 import { MaterialIcons, AntDesign } from "@expo/vector-icons";
-
+import { initDatabase, insertUser, db } from "../database/Database";
 
 const LoginScreen = () => {
-  console.log("Platform.OS",Platform.OS)
+  console.log("Platform.OS", Platform.OS);
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const [errorMessage, setErrorMessage] = useState("");
   const navigation = useNavigation();
+  const [emailColor, setEmailColor] = useState("black")
+  const [passwordColor, setPasswordColor] = useState("black")
+
   const handleLogin = () => {
-    navigation.replace("Main");
+    if (email && password) {
+      db.transaction((tx) => {
+        tx.executeSql(
+          "SELECT * FROM users WHERE email = ?",
+          [email],
+          (_, result) => {
+            if (result.rows.length > 0) {
+              const user = result.rows.item(0);
+              if (user.password === password) {
+                navigation.replace("Main"); // Navigate after successful login
+              } else {
+                setErrorMessage("Incorrect password"); // Incorrect password
+                setPasswordColor("red");
+              }
+            } else {
+              setErrorMessage("ًIncorrect Email"); // Email not found
+              setEmailColor("red");
+            }
+          },
+          (error) => {
+            console.error("Error during login validation:", error);
+            setErrorMessage(error)
+          }
+        );
+      });
+    } else {
+      setErrorMessage("Please enter email and password");
+    }
   };
+
+  useEffect(() => {
+    setErrorMessage();
+    setEmailColor("black");
+    setPasswordColor("black");
+  }, [email, password]);
+
   return (
     <>
       <StatusBar barStyle={"dark-content"} backgroundColor={"white"} />
@@ -32,10 +70,10 @@ const LoginScreen = () => {
           justifyContent: "center",
         }}
       >
-        <View style={{marginBottom:40}}>
+        <View style={{ marginBottom: 40 }}>
           <Image
             style={{ width: 250, height: 100 }}
-            source={require('../assets/logo/logo-no-background.png')}
+            source={require("../assets/logo/logo-no-background.png")}
           />
         </View>
 
@@ -74,12 +112,13 @@ const LoginScreen = () => {
 
               <TextInput
                 value={email}
-                onChangeText={(text) => setEmail(text)}
+                onChangeText={setEmail}
                 style={{
-                  color: "gray",
+                  color: emailColor,
                   marginVertical: 10,
                   width: 300,
                   fontSize: email ? 16 : 16,
+                  borderColor: "red",
                 }}
                 placeholder="enter your Email"
               />
@@ -107,10 +146,10 @@ const LoginScreen = () => {
 
               <TextInput
                 value={password}
-                onChangeText={(text) => setPassword(text)}
+                onChangeText={setPassword}
                 secureTextEntry={true}
                 style={{
-                  color: "gray",
+                  color: passwordColor,
                   marginVertical: 10,
                   width: 300,
                   fontSize: password ? 16 : 16,
@@ -118,6 +157,7 @@ const LoginScreen = () => {
                 placeholder="enter your Password"
               />
             </View>
+            <Text style={{color:"red",fontWeight:"bold"}}>{errorMessage}</Text>
           </View>
 
           <View

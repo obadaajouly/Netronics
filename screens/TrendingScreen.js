@@ -17,29 +17,14 @@ import {
   Entypo,
   AntDesign,
 } from "@expo/vector-icons";
-import DropDownPicker from "react-native-dropdown-picker";
-const { list, images, deals, offers, productsList } = require("../List");
-import { SliderBox } from "react-native-image-slider-box";
+const { productsList } = require("../ProductData");
 import ProductCard from "../components/ProductCard";
 import { FontAwesome5 } from "@expo/vector-icons";
 
 const TrendingScreen = () => {
   console.log("Platform.OS", Platform.OS);
   const [os, setOs] = useState(Platform.OS);
-  const [open, setOpen] = useState(false);
-  const [category, setCategory] = useState("jewelery");
-  const [products, setProducts] = useState(productsList);
   const [barColor, setBarColor] = useState();
-  const [items, setItems] = useState([
-    { label: "Men's clothing", value: "men's clothing" },
-    { label: "jewelery", value: "jewelery" },
-    { label: "electronics", value: "electronics" },
-    { label: "women's clothing", value: "women's clothing" },
-  ]);
-
-  const onGenderOpen = useCallback(() => {
-    setCompanyOpen(false);
-  });
 
   useEffect(() => {
     setBarColor("#f8c353");
@@ -102,7 +87,7 @@ const TrendingScreen = () => {
                 name="mic"
                 size={24}
                 color="#393E46"
-                style={{ marginLeft: 10 }}
+                style={{ marginTop: 10 }}
               />
             </View>
           </View>
@@ -113,44 +98,17 @@ const TrendingScreen = () => {
         </View>
         <View
           style={{
-            marginHorizontal: 10,
-            marginTop: 15,
-            width: "45%",
-            marginBottom: open ? 50 : 15,
-          }}
-        >
-          <DropDownPicker
-            style={{
-              borderColor: "#B7B7B7",
-              height: 30,
-              marginBottom: open ? 120 : 15,
-              width: "100%",
-            }}
-            open={open}
-            value={category}
-            items={items}
-            setOpen={setOpen}
-            setValue={setCategory}
-            setItems={setItems}
-            placeholder="choose category"
-            placeholderStyle={styles.placeholderStyles}
-            onOpen={onGenderOpen}
-            // onChangeValue={onChange}
-            zIndex={3000}
-            zIndexInverse={1000}
-          />
-        </View>
-        <View
-          style={{
             flexDirection: "row",
             alignItems: "center",
             flexWrap: "wrap",
             justifyContent: "center",
           }}
         >
-          {offers.map((item, index) => (
-            <ProductCard item={item} key={index} />
-          ))}
+          {productsList
+            ?.filter((item) => item.type === "trending")
+            .map((item, index) => (
+              <ProductCard item={item} key={index} />
+            ))}
         </View>
       </ScrollView>
     </>

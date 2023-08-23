@@ -160,7 +160,7 @@ const StackNavigator = () => {
         <Stack.Screen
           name="ProductInfo"
           component={ProductInfoScreen}
-          options={{ headerShown: false }}
+          options={{ headerShown: true }}
         />
         <Stack.Screen
           name="Checkout"

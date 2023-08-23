@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import {
   Text,
   View,
@@ -10,20 +10,86 @@ import {
 } from "react-native";
 import { useNavigation } from "@react-navigation/native";
 import { MaterialIcons, AntDesign, Ionicons } from "@expo/vector-icons";
-
+import { initDatabase, insertUser } from "../database/Database";
 const RegisterScreen = () => {
   // State variables to store user input
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [name, setName] = useState("");
+  const [errorMessage, setErrorMessage] = useState("");
+  const [emailColor, setEmailColor] = useState("black");
+  const [passwordColor, setPasswordColor] = useState("black");
 
   // Navigation instance for navigating between screens
   const navigation = useNavigation();
 
   // Function to handle registration
   const handleRegister = () => {
-    navigation.navigate("Home"); // Navigate to the "Home" screen
+    const emailRegex = /^[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Za-z]{2,4}$/;
+    const passwordRegex =
+      /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,16}$/;
+
+    if (!name || !email || !password) {
+      setErrorMessage("All fields are required");
+      return;
+    }
+
+    if (!emailRegex.test(email)) {
+      setErrorMessage("Invalid email format");
+      setEmailColor("red");
+      return;
+    }
+
+    if (password.length < 8 || password.length > 16) {
+      setErrorMessage("Password must be 8-16 characters long");
+      setPasswordColor("red");
+      return;
+    }
+
+    if (!passwordRegex.test(password)) {
+      let errorMessages = [];
+      setPasswordColor("red");
+
+      if (!/(?=.*[a-z])/.test(password)) {
+        errorMessages.push(
+          "one lowercase letter"
+        );
+      }
+
+      if (!/(?=.*[A-Z])/.test(password)) {
+        errorMessages.push(
+          "one uppercase letter"
+        );
+      }
+
+      if (!/(?=.*\d)/.test(password)) {
+        errorMessages.push("one digit");
+      }
+
+      if (!/(?=.*[@$!%*?&])/.test(password)) {
+        errorMessages.push(
+          "one special character (@$!%*?&)"
+        );
+      }
+
+      setErrorMessage("Password must contain at least "+errorMessages.join(", "));
+      return;
+    }
+
+    // If all validation checks pass, proceed with registration
+    insertUser(name, email, password);
+    navigation.navigate("Login"); // Navigate after registration
   };
+
+  useEffect(() => {
+    initDatabase(); // Initialize the database when the component mounts
+  }, []);
+
+  useEffect(() => {
+    setErrorMessage();
+    setEmailColor("black");
+    setPasswordColor("black");
+  }, [name, email, password]);
 
   return (
     <>
@@ -39,10 +105,10 @@ const RegisterScreen = () => {
           justifyContent: "center",
         }}
       >
-        <View style={{marginBottom:40}}>
+        <View style={{ marginBottom: 40 }}>
           <Image
             style={{ width: 250, height: 100 }}
-            source={require('../assets/logo/logo-no-background.png')}
+            source={require("../assets/logo/logo-no-background.png")}
           />
         </View>
 
@@ -83,9 +149,9 @@ const RegisterScreen = () => {
               />
               <TextInput
                 value={name}
-                onChangeText={(text) => setName(text)}
+                onChangeText={setName}
                 style={{
-                  color: "gray",
+                  color: "black",
                   marginVertical: 10,
                   width: 300,
                   fontSize: name ? 16 : 16,
@@ -115,9 +181,9 @@ const RegisterScreen = () => {
 
               <TextInput
                 value={email}
-                onChangeText={(text) => setEmail(text)}
+                onChangeText={setEmail}
                 style={{
-                  color: "gray",
+                  color: emailColor,
                   marginVertical: 10,
                   width: 300,
                   fontSize: password ? 16 : 16,
@@ -149,10 +215,10 @@ const RegisterScreen = () => {
 
               <TextInput
                 value={password}
-                onChangeText={(text) => setPassword(text)}
+                onChangeText={setPassword}
                 secureTextEntry={true}
                 style={{
-                  color: "gray",
+                  color: passwordColor,
                   marginVertical: 10,
                   width: 300,
                   fontSize: email ? 16 : 16,
@@ -161,7 +227,9 @@ const RegisterScreen = () => {
               />
             </View>
           </View>
-
+          <View style={{maxWidth:"80%"}}>
+          <Text style={{color:"red", fontWeight:"bold"}}>{errorMessage}</Text>
+          </View>
           {/* Register button */}
           <View
             style={{
@@ -172,7 +240,7 @@ const RegisterScreen = () => {
             }}
           ></View>
 
-          <View style={{ marginTop: 80 }} />
+          <View style={{ marginTop: 60 }} />
 
           <Pressable
             onPress={handleRegister}
