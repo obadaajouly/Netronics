@@ -1,4 +1,4 @@
-import React , {useState}from "react";
+import React, { useEffect, useState } from "react";
 import {
   Text,
   View,
@@ -9,7 +9,7 @@ import {
   StatusBar,
   ImageBackground,
   Dimensions,
-  Platform
+  Platform,
 } from "react-native";
 import { Feather } from "@expo/vector-icons";
 import { AntDesign } from "@expo/vector-icons";
@@ -19,78 +19,90 @@ import { Entypo } from "@expo/vector-icons";
 import { useNavigation, useRoute } from "@react-navigation/native";
 import { MaterialCommunityIcons } from "@expo/vector-icons";
 import { FontAwesome } from "@expo/vector-icons";
+import ProductCard from "../components/ProductCard";
+import { productsList } from "../ProductData";
 
 const ProductInfoScreen = () => {
+  const route = useRoute();
+  const [id, setId] = useState(route.params.id);
+  const [product, setProduct] = useState();
+  const [isLiked, setIsLiked] = useState(false);
 
-    const [isLiked, setIsLiked] = useState(false); 
-  
-    const toggleLike = () => {
-      setIsLiked(!isLiked); 
-    };
-    const [os, setOs] = useState(Platform.OS);
+  useEffect(() => {
+    const currentProduct = productsList.find((item) => item.id === id);
+    setProduct(currentProduct);
+  }, [id]);
+
+  const toggleLike = () => {
+    setIsLiked(!isLiked);
+  };
+  const [os, setOs] = useState(Platform.OS);
   const navigation = useNavigation();
   const { width } = Dimensions.get("window");
   const height = (width * 100) / 100;
+  console.log(product);
   return (
     <>
-      {os === "android" &&(
-          <StatusBar barStyle={"dark-content"} backgroundColor={"white"} />
-        )}
-      {os === "ios"&& (<View style={{ marginTop: 50 }}></View>)}
-      <ScrollView style={{ paddingTop: 15, flex: 1, backgroundColor: "white" }}>
-        <View
-          style={{
-            display: "flex",
-            flexDirection: "row",
-            justifyContent: "space-between",
-            alignItems: "center",
-            width: "92%",
-            marginLeft: 15,
-          }}
-        >
-          <AntDesign name="left" size={12} color="black" />
-          <Text style={{ fontSize: 14, fontWeight: 700 }}>Product Details</Text>
-          <Pressable onPress={() => navigation.navigate("Cart")} style={{}}>
-            <AntDesign name="shoppingcart" size={24} color="black" />
-          </Pressable>
-        </View>
-
+      {os === "android" && (
+        <StatusBar barStyle={"dark-content"} backgroundColor={"white"} />
+      )}
+      {os === "ios" && <View style={{ marginTop: 50 }}></View>}
+      <ScrollView style={{ flex: 1, backgroundColor: "white" }}>
         <ScrollView horizontal showsHorizontalScrollIndicator={false}>
-          <ImageBackground
-            style={{ width, height, marginTop: 25, resizeMode: "contain" }}
-            source={{
-              uri: "https://m.media-amazon.com/images/I/61QRgOgBx0L._SX679_.jpg",
-            }}
-          >
-            <View
-              style={{
-                padding: 20,
-                flexDirection: "row",
-                alignItems: "center",
-                justifyContent: "space-between",
-              }}
+          {product?.carouselImages.map((item, index) => (
+            <ImageBackground
+              style={{ width, height, resizeMode: "contain" }}
+              source={{ uri: item }}
+              key={index}
             >
               <View
                 style={{
-                  width: 40,
-                  height: 40,
-                  borderRadius: 20,
-                  backgroundColor: "#FF3F3F",
-                  justifyContent: "center",
-                  alignItems: "center",
+                  padding: 20,
                   flexDirection: "row",
+                  alignItems: "center",
+                  justifyContent: "space-between",
                 }}
               >
-                <Text
+                <View
                   style={{
-                    color: "white",
-                    textAlign: "center",
-                    fontWeight: "500",
-                    fontSize: 12,
+                    width: 40,
+                    height: 40,
+                    borderRadius: 20,
+                    backgroundColor: "#C60C30",
+                    justifyContent: "center",
+                    alignItems: "center",
+                    flexDirection: "row",
                   }}
                 >
-                  20% off
-                </Text>
+                  <Text
+                    style={{
+                      color: "white",
+                      textAlign: "center",
+                      fontWeight: "600",
+                      fontSize: 12,
+                    }}
+                  >
+                    20% off
+                  </Text>
+                </View>
+
+                <View
+                  style={{
+                    width: 40,
+                    height: 40,
+                    borderRadius: 20,
+                    backgroundColor: "#E0E0E0",
+                    justifyContent: "center",
+                    alignItems: "center",
+                    flexDirection: "row",
+                  }}
+                >
+                  <MaterialCommunityIcons
+                    name="share-variant"
+                    size={24}
+                    color="black"
+                  />
+                </View>
               </View>
 
               <View
@@ -98,25 +110,19 @@ const ProductInfoScreen = () => {
                   width: 40,
                   height: 40,
                   borderRadius: 20,
-                  backgroundColor: "#fff",
+                  backgroundColor: "#E0E0E0",
                   justifyContent: "center",
                   alignItems: "center",
                   flexDirection: "row",
-                  shadowColor: "#393E46",
-                  shadowOffset: { width: 0, height: 2 },
-                  shadowOpacity: 0.2,
-                  shadowRadius: 3,
-                  elevation: 5,
+                  marginTop: "auto",
+                  marginLeft: 20,
+                  marginBottom: 20,
                 }}
               >
-                <MaterialCommunityIcons
-                  name="share-variant"
-                  size={24}
-                  color="black"
-                />
+                <AntDesign name="hearto" size={24} color="black" />
               </View>
-            </View>
-          </ImageBackground>
+            </ImageBackground>
+          ))}
         </ScrollView>
         <View
           style={{
@@ -138,7 +144,7 @@ const ProductInfoScreen = () => {
                 fontSize: 16,
               }}
             >
-              SAMSUNG Galaxy S23 Ultra
+              {product?.title}
             </Text>
             <View
               style={{
@@ -158,7 +164,7 @@ const ProductInfoScreen = () => {
                   paddingRight: 10,
                 }}
               >
-                4.9
+                {product?.rating}
               </Text>
               <Text
                 style={{
@@ -171,8 +177,12 @@ const ProductInfoScreen = () => {
             </View>
           </View>
           <Pressable onPress={toggleLike}>
-      <AntDesign name={isLiked ? 'heart' : 'hearto'} size={24} color={isLiked ? 'red' : 'black'} />
-    </Pressable>
+            <AntDesign
+              name={isLiked ? "heart" : "hearto"}
+              size={24}
+              color={isLiked ? "red" : "black"}
+            />
+          </Pressable>
         </View>
         <Text
           style={{
@@ -183,8 +193,7 @@ const ProductInfoScreen = () => {
             marginTop: 10,
           }}
         >
-          Samsung Galaxy S23 Ultra Cell Phone, Smartphone, 256GB, 200MP Camera,
-          Night Mode, Long Battery Life, S Pen, US Version, 2023, Phantom Black
+          {product?.desc}
         </Text>
         <View
           style={{
@@ -205,7 +214,9 @@ const ProductInfoScreen = () => {
               fontSize: 20,
             }}
           >
-            $549.99
+            {product?.price} JD  <Text style={{ fontSize: 14,textDecorationLine: 'line-through',color: "red"}}>
+            {product?.oldprice} JD
+          </Text>
           </Text>
           <View
             style={{
@@ -260,7 +271,6 @@ const ProductInfoScreen = () => {
       </ScrollView>
     </>
   );
-          
 };
 
 export default ProductInfoScreen;
