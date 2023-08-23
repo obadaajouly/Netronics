@@ -723,7 +723,7 @@ const productsList = [
   },
   {
     id: "39",
-    title: "LG gram 2in1",
+    title: "SAMSUNG 14 Galaxy",
     img: "https://m.media-amazon.com/images/I/519KZO0oXaL._AC_.jpg",
     carouselImages: [
       "https://m.media-amazon.com/images/I/41FMqyAOuSL._AC_.jpg",

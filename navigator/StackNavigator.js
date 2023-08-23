@@ -122,6 +122,7 @@ const StackNavigator = () => {
   return (
     <NavigationContainer>
       <Stack.Navigator>
+
       <Stack.Screen
           name="Login"
           component={LoginScreen}
