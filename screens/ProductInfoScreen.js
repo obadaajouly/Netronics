@@ -21,12 +21,26 @@ import { MaterialCommunityIcons } from "@expo/vector-icons";
 import { FontAwesome } from "@expo/vector-icons";
 import ProductCard from "../components/ProductCard";
 import { productsList } from "../ProductData";
+import { useCartsContext } from "../hooks/useCartContext";
 
 const ProductInfoScreen = () => {
+  const { dispatch } = useCartsContext();
   const route = useRoute();
   const [id, setId] = useState(route.params.id);
   const [product, setProduct] = useState();
   const [isLiked, setIsLiked] = useState(false);
+  const [quantity, setQuantity] = useState(1);
+
+
+  const decreaseQuantity = () => {
+    if (quantity > 1) {
+      setQuantity(quantity - 1);
+    }
+  };
+
+  const increaseQuantity = () => {
+    setQuantity(quantity + 1);
+  };
 
   useEffect(() => {
     const currentProduct = productsList.find((item) => item.id === id);
@@ -38,6 +52,11 @@ const ProductInfoScreen = () => {
   };
   const [os, setOs] = useState(Platform.OS);
   const navigation = useNavigation();
+  const [addedToCart, setAddedToCart] = useState(false);
+  const addItemToCart = (item) => {
+    dispatch({ type: "ADD_CARD", payload: product });
+    setAddedToCart(true);
+  };
   const { width } = Dimensions.get("window");
   const height = (width * 100) / 100;
   console.log(product);
@@ -214,9 +233,16 @@ const ProductInfoScreen = () => {
               fontSize: 20,
             }}
           >
-            {product?.price} JD  <Text style={{ fontSize: 14,textDecorationLine: 'line-through',color: "red"}}>
-            {product?.oldprice} JD
-          </Text>
+            {product?.price} JD{" "}
+            <Text
+              style={{
+                fontSize: 14,
+                textDecorationLine: "line-through",
+                color: "red",
+              }}
+            >
+              {product?.oldprice} JD
+            </Text>
           </Text>
           <View
             style={{
@@ -231,12 +257,13 @@ const ProductInfoScreen = () => {
             }}
           >
             <Pressable>
-              <AntDesign name="pluscircle" size={29} color="#222629" />
+              <AntDesign onPress={decreaseQuantity} name="minuscircle" size={29} color="#222629" />
             </Pressable>
-            <Text style={{ marginLeft: 17 }}>1</Text>
+            <Text style={{ marginLeft: 17 }}>{quantity}</Text>
             <Pressable>
               <AntDesign
-                name="minuscircle"
+              onPress={increaseQuantity}
+                name="pluscircle"
                 size={29}
                 color="#222629"
                 style={{ marginLeft: 16 }}
@@ -246,6 +273,7 @@ const ProductInfoScreen = () => {
         </View>
 
         <Pressable
+          onPress={() => addItemToCart(product)}
           style={{
             width: 220,
             backgroundColor: "#f8c353",
@@ -257,16 +285,31 @@ const ProductInfoScreen = () => {
             marginBottom: 35,
           }}
         >
-          <Text
-            style={{
-              textAlign: "center",
-              color: "#222629",
-              fontSize: 16,
-              fontWeight: 500,
-            }}
-          >
-            Checkout
-          </Text>
+          {addedToCart ? (
+            <View>
+              <Text
+                style={{
+                  textAlign: "center",
+                  color: "#222629",
+                  fontSize: 16,
+                  fontWeight: 500,
+                }}
+              >
+                Added to Cart
+              </Text>
+            </View>
+          ) : (
+            <Text
+              style={{
+                textAlign: "center",
+                color: "#222629",
+                fontSize: 16,
+                fontWeight: 500,
+              }}
+            >
+              Add to Cart
+            </Text>
+          )}
         </Pressable>
       </ScrollView>
     </>

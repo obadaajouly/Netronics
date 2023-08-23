@@ -76,7 +76,7 @@ const StackNavigator = () => {
           options={{
             tabBarLabel: "Cart",
             tabBarLabelStyle: { color: "black" },
-            headerShown: false,
+            headerShown: true,
             tabBarIcon: ({ focused }) =>
               focused ? (
                 <AntDesign name="shoppingcart" size={30} color="#f8c353" />
@@ -100,7 +100,7 @@ const StackNavigator = () => {
               ),
           }}
         />
-        <Tab.Screen
+        {/* <Tab.Screen
           name="Main"
           component={Pages}
           options={{
@@ -114,7 +114,7 @@ const StackNavigator = () => {
                 <Entypo name="menu" size={30} color="black" />
               ),
           }}
-        />
+        /> */}
       </Tab.Navigator>
     );
   }
@@ -139,11 +139,6 @@ const StackNavigator = () => {
           options={{ headerShown: false }}
         />
         <Stack.Screen
-          name="Cart"
-          component={CartScreen}
-          options={{ headerShown: false }}
-        />
-        <Stack.Screen
           name="Categories"
           component={CategoriesScreen}
           options={{ headerShown: false }}
@@ -151,7 +146,7 @@ const StackNavigator = () => {
         <Stack.Screen
           name="Category"
           component={CategoryScreen}
-          options={{ headerShown: false }}
+          options={{ headerShown: true }}
         />
         <Stack.Screen
           name="Trending"

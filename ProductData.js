@@ -50,15 +50,15 @@ const productsList = [
     ],
     colors: ["Black"],
     price: 18,
-    oldprice: "",
-    type: "",
+    oldprice: 22,
+    type: "trending",
     category: "accessories",
     brand: "MOZOTER",
     rating: 4.3,
   },
   {
     id: "4",
-    title: " Charger Fast Charger Block Wall",
+    title: "Fast Charger Block Wall",
     desc: "C Type Charger Fast Charge: Upgraded usb c cable support QC 2.0/3.0 fast charge technology.Sync and Charge simultaneously at fast speeds on your USB Type C compatible devices.",
     img: "https://m.media-amazon.com/images/I/71eggbEbHXL.__AC_SX300_SY300_QL70_FMwebp_.jpg",
     carouselImages: [
@@ -69,7 +69,7 @@ const productsList = [
     ],
     colors: ["Blue"],
     price: 12,
-    oldprice: "",
+    oldprice: 15,
     type: "topseller",
     category: "accessories",
     brand: "Type C ",
@@ -88,7 +88,7 @@ const productsList = [
     ],
     colors: ["Flowers Plants"],
     price: 15,
-    oldprice: "",
+    oldprice: 22,
     type: "trending",
     category: "accessories",
     brand: "AIMSA",
@@ -115,7 +115,7 @@ const productsList = [
   },
   {
     id: "7",
-    title: "ATUMTEK Selfie Stick Tripod",
+    title: "Selfie Stick Tripod",
     desc: "The ATUMTEK Selfie Stick and tripod stand are integrated, combined with a premium aluminum extendable stick, making the selfie stick exceptionally stable. The extendable pole is constructed with aviation-grade aluminum alloy and undergoes surface anodic oxidation for sturdiness and durability.",
     img: "https://m.media-amazon.com/images/I/61S1m4us80L._AC_SX466_.jpg",
     carouselImages: [
@@ -153,7 +153,7 @@ const productsList = [
   },
   {
     id: "9",
-    title: "Lamicall Tablet Stand Adjustable",
+    title: "Tablet Stand Adjustable",
     desc: "This tablet stand applies to 4 - 13 inch tablet and phone, such as new 2022/ 2021 iPad Pro 11/ 12.9 inch, iPad 10.9, iPad Air 5, iPad mini 6, iPad Pro 9.7 / 10.5, Surface Pro, Galaxy Tab, iPhone 14 Pro Max, iPhone 13 Pro Max, iPhone 12, iPhone 11. If you use a tablet larger than 12” and found it’s not stable to use, you can set it horizontally, which helps maintain more stability.",
     img: "https://m.media-amazon.com/images/I/71YnvIEkWwL._AC_SY879_.jpg",
     carouselImages: [
@@ -172,7 +172,7 @@ const productsList = [
   },
   {
     id: "10",
-    title: "EPULY Compatible with Apple Watch Band",
+    title: "Apple Watch Band",
     desc: "Epuly magnetic clasp stainless steel mesh Loop fully compatible with apple watch band ultra 49mm 45mm 44mm 42mm series 8 (2022), series 7, series SE, series 6, series 5, series 4, series 3, series 2. Fits 6.10-7.3 inch wrist (155mm-185mm).",
     img: "https://m.media-amazon.com/images/I/81PGSHf8pnL._AC_SX679_.jpg",
     carouselImages: [
@@ -343,7 +343,7 @@ const productsList = [
   },
   {
     id: "19",
-    "title ": "Galaxy Note20 Ultra 5G",
+    "title ": "Note20 Ultra",
     img: "https://fdn2.gsmarena.com/vv/pics/samsung/samsung-galaxy-note20-ultra-1.jpg",
     carouselImages: [
       "https://fdn.gsmarena.com/imgroot/reviews/20/samsung-galaxy-note20-ultra/review18/lifestyle/-1024w2/gsmarena_004.jpg",
@@ -362,7 +362,7 @@ const productsList = [
   },
   {
     id: "20",
-    "title ": "Galaxy S22 Ultra 5G",
+    "title ": "S22 Ultra",
     img: "https://fdn2.gsmarena.com/vv/pics/samsung/samsung-galaxy-s22-ultra-5g-2.jpg",
     carouselImages: [
       "https://fdn2.gsmarena.com/vv/pics/samsung/samsung-galaxy-s22-ultra-5g-3.jpg",
@@ -400,7 +400,7 @@ const productsList = [
   },
   {
     id: "22",
-    title: "Samsung Galaxy Watch6",
+    title: "Galaxy Watch6",
     img: "https://m.media-amazon.com/images/I/61CZSoSnVPL._AC_SL1500_.jpg",
     carouselImages: [
       "https://m.media-amazon.com/images/I/61CZSoSnVPL._AC_SL1500_.jpg",
@@ -419,7 +419,7 @@ const productsList = [
   },
   {
     id: "23",
-    title: "Samsung Galaxy Watch5 Pro",
+    title: "Galaxy Watch5 Pro",
     img: "https://m.media-amazon.com/images/I/61Sl+xoVHoL._AC_SL1500_.jpg",
     carouselImages: [
       "https://m.media-amazon.com/images/I/61zBT+q6ZUL._AC_SL1500_.jpg",
@@ -438,7 +438,7 @@ const productsList = [
   },
   {
     id: "24",
-    title: "Samsung Galaxy Watch5",
+    title: "Galaxy Watch 5",
     img: "https://m.media-amazon.com/images/I/61Cmk-sFNWL._AC_SL1500_.jpg",
     carouselImages: [
       "https://m.media-amazon.com/images/I/61Cmk-sFNWL._AC_SL1500_.jpg",
@@ -457,7 +457,7 @@ const productsList = [
   },
   {
     id: "25",
-    title: "Samsung Galaxy Watch4 Classic",
+    title: "Watch 4 Classic",
     img: "https://m.media-amazon.com/images/I/61em2RBifsL._AC_SL1500_.jpg",
     carouselImages: [
       "https://m.media-amazon.com/images/I/61em2RBifsL._AC_SL1500_.jpg",
@@ -486,8 +486,8 @@ const productsList = [
     ],
     desc: "Apple Watch Ultra [GPS + Cellular 49mm] Smart Watch w/Rugged Titanium Case & Green Alpine Loop Small. Fitness Tracker, Precision GPS, Action Button, Extra-Long Battery Life, Brighter Retina Display",
     colors: ["Green", "Orange", "White"],
-    price: "900",
-    oldprice: "",
+    price: 900,
+    oldprice: 994,
     type: "",
     category: "Smartwatch",
     brand: "Apple",
@@ -495,7 +495,7 @@ const productsList = [
   },
   {
     id: "27",
-    title: "Apple Watch Series 8",
+    title: "Apple Watch 8",
     img: "https://m.media-amazon.com/images/I/71uOgDy40BL._AC_SL1500_.jpg",
     carouselImages: [
       "https://m.media-amazon.com/images/I/71uOgDy40BL._AC_SL1500_.jpg",
@@ -533,7 +533,7 @@ const productsList = [
   },
   {
     id: "29",
-    title: "Xiaomi Redmi Watch 3",
+    title: "Redmi Watch 3",
     img: "https://m.media-amazon.com/images/I/51gVoKZTDsL._AC_SL1500_.jpg",
     carouselImages: [
       "https://m.media-amazon.com/images/I/61m73yeO26L._AC_SL1500_.jpg",
@@ -552,7 +552,7 @@ const productsList = [
   },
   {
     id: "30",
-    title: "Xiaomi Redmi Watch 2 Lite",
+    title: "Redmi Watch 2 Lite",
     img: "https://m.media-amazon.com/images/I/51MprLPx6YL._AC_SL1200_.jpg",
     carouselImages: [
       "https://m.media-amazon.com/images/I/51MprLPx6YL._AC_SL1200_.jpg",
@@ -762,7 +762,7 @@ const productsList = [
 
   {
     id: "41",
-    title: " Apple iPad Pro 12.9",
+    title: "iPad Pro 12.9",
     img: "https://fdn2.gsmarena.com/vv/pics/apple/apple-ipad-pro-129-2022-1.jpg",
     carouselImages: [
       "https://fdn2.gsmarena.com/vv/pics/apple/apple-ipad-pro-129-2022-2.jpg",
@@ -800,7 +800,7 @@ const productsList = [
   },
   {
     id: "43",
-    title: "Apple iPad 10.2",
+    title: "iPad 10.2",
     img: "https://fdn2.gsmarena.com/vv/pics/apple/apple-ipad8-102-inches-2020-01.jpg",
     carouselImages: [
       "https://fdn2.gsmarena.com/vv/pics/apple/apple-ipad8-102-inches-2020-2.jpg",
@@ -819,7 +819,7 @@ const productsList = [
   },
   {
     id: "44",
-    title: "Apple iPad 10.2",
+    title: "iPad 10.2",
     img: "https://fdn2.gsmarena.com/vv/pics/apple/apple-ipad-102-2021-1.jpg",
     carouselImages: [
       "https://fdn2.gsmarena.com/vv/bigpic/apple-ipad-102-2021-.jpg",
@@ -838,7 +838,7 @@ const productsList = [
   },
   {
     id: "45",
-    title: "Apple iPad Air",
+    title: "iPad Air",
     img: "https://fdn2.gsmarena.com/vv/pics/apple/apple-ipad-air4-2020-01.jpg",
     carouselImages: [
       "https://fdn2.gsmarena.com/vv/pics/apple/apple-ipad-air4-2020-2.jpg",
@@ -857,7 +857,7 @@ const productsList = [
   },
   {
     id: "46",
-    title: "Apple iPad Pro 12.9",
+    title: "iPad Pro 12.9",
     img: "https://fdn2.gsmarena.com/vv/pics/apple/apple-ipad-pro-129-2021-1.jpg",
     carouselImages: [
       "https://fdn2.gsmarena.com/vv/pics/apple/apple-ipad-pro-129-2021-2.jpg",
@@ -876,7 +876,7 @@ const productsList = [
   },
   {
     id: "47",
-    title: "Apple iPad Pro 11 ",
+    title: "iPad Pro 11 ",
     img: "https://fdn2.gsmarena.com/vv/bigpic/apple-ipad-pro-11-2020.jpg",
     carouselImages: [
       "https://fdn2.gsmarena.com/vv/pics/apple/apple-ipad-pro-2020-1.jpg",
@@ -895,7 +895,7 @@ const productsList = [
   },
   {
     id: "48",
-    title: "Apple iPad 10.2",
+    title: "iPad 10.2",
     img: "https://fdn2.gsmarena.com/vv/pics/apple/apple-ipad7-1.jpg",
     carouselImages: [
       "https://fdn2.gsmarena.com/vv/pics/apple/apple-ipad7-2.jpg",
@@ -914,7 +914,7 @@ const productsList = [
   },
   {
     id: "49",
-    title: "Apple iPad mini 4",
+    title: "iPad mini 4",
     img: "https://fdn2.gsmarena.com/vv/pics/apple/apple-ipad-mini-4-1.jpg",
     carouselImages: [
       "https://fdn2.gsmarena.com/vv/pics/apple/apple-ipad-mini-4-0.jpg",
@@ -933,7 +933,7 @@ const productsList = [
   },
   {
     id: "50",
-    title: "Apple iPad 9.7 ",
+    title: "iPad 9.7 ",
     img: "https://fdn2.gsmarena.com/vv/pics/apple/apple-ipad-97-2017-1.jpg",
     carouselImages: [
       "https://fdn2.gsmarena.com/vv/pics/apple/apple-ipad-97-2017-2.jpg",
