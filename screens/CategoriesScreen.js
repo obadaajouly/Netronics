@@ -25,8 +25,8 @@ const cards = [
     imageId: "https://www.zdnet.com/a/img/resize/bd45ee12d626e1a79d05e6c8abbc4a263d125cc3/2022/02/25/c9d0c484-4a1d-48aa-97ca-534adb533d09/huawei-matebook-x-pro-mwc.jpg?auto=webp&width=1280",
   },
   {
-    title: "Headsets",
-    copy: "Headsets",
+    title: "Accessory ",
+    copy: "Accessory ",
     button: "View Product ",
     imageId: "https://consumer.huawei.com/content/dam/huawei-cbg-site/weu/be/mkt/pdp/audio/freebuds-studio/audio.jpeg",
   },
@@ -35,6 +35,12 @@ const cards = [
     copy: "Smart Watches",
     button: "View Product",
     imageId: "https://consumer.huawei.com/content/dam/huawei-cbg-site/weu/common/mkt/plp/wearables/watch-fit2.jpg",
+  },
+  {
+    title: "Tablets",
+    copy: "Tablets",
+    button: "View Product",
+    imageId: "https://smartbuy-me.com/smartbuystore/medias/SMT0701ST0228.jpg?context=c21hcnRidXliMmN8aW1hZ2VzfDc3MDF8aW1hZ2UvanBlZ3xpbWFnZXMvaGJkL2g4OC84ODU3MTczMDAwMjIyL1NNVDA3MDFTVDAyMjguanBnfGJlYmE5YjY3NzI1N2I4N2E5NzY5Njk4OTU1MGIwNTlkMTVkY2I1MmE1ZWVjOTI1NTFiM2ZjZmIzOTNmM2JjYTI",
   },
 ];
 
